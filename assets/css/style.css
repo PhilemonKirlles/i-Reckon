@@ -39,16 +39,16 @@ body {
   font-size: 30px;
 }
 
-.place-container {
+.place-box {
   text-align: end;
 }
 
-.place-container .time-zone {
+.place-box .time-zone {
   font-size: 30px;
   font-weight: 100;
 }
 
-.place-container .country {
+.place-box .country {
   font-size: 12px;
   font-weight: 700;
 }
@@ -161,12 +161,12 @@ body {
     font-size: 20px;
   }
 
-  .place-container {
+  .place-box {
     text-align: end;
     margin-top: 15px;
   }
 
-  .place-container .time-zone {
+  .place-box .time-zone {
     font-size: 20px;
   }
 
