@@ -1,0 +1,85 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: rgb(161, 155, 176);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+h1 {
+  color: whitesmoke;
+  font-weight: bolder;
+  margin-bottom: 18px;
+}
+
+header {
+  animation: myanime 60000ms infinite alternate;
+  background: linear-gradient(to right, rgb(210, 235, 245), rgb(13, 0, 41));
+  text-align: center;
+}
+main {
+  margin: 10px 20px 10px 10px;
+}
+
+.hide {
+  display: none;
+}
+
+
+
+.search-btn {
+  color: #d2ebf5;
+  background-color: #0d00299f;
+  font-weight: bold;
+  margin-bottom: 10px;
+  border-radius: 7px;
+  border-color: #d2ebf5;
+}
+
+.search-history {
+  padding-top: 5px;
+  border-top: 3px solid #d2ebf5;
+}
+
+.recall-btn {
+  margin: 5px 0 5px 0;
+  background-color: #d2ebf5;
+  padding: 1px yellow;
+  border: 3px solid #0d00299f;
+  border-radius: 7px;
+}
+
+.results-container {
+  margin: 10px;
+}
+
+.info-container {
+  border: 1px solid #d2ebf5;
+  padding: 5px;
+}
+
+
+
+.weather-info {
+  font-weight: 500;
+}
+
+
+
+.forecast-container {
+  margin-top: 10px;
+}
+
+.forecast-box {
+
+}
+
+.forecast-box:hover {
+  transition-duration: 750ms;
+  box-shadow: 0px 0px 5px 2px #0d00299f;
+}
+
+
