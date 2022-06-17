@@ -1,101 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@200&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="./assets/css/style.css" />
-    <title>Weather App</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>weather-search by city weather dashboard-</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">
   </head>
+
   <body>
-    <div class="container">
-      <div class="date-time">
-        <div class="date-container">
-          <div class="time" id="time">12:00 <span id="am-pm">PM</span></div>
-          <div class="date" id="date">Monday, May 07</div>
+    <header class="d-flex justify-content-center">
+      <h1>Weather Dashboard</h1>
+    </header>
 
-          <div class="weather-now" id="weather-now"></div>
+    <main class="d-flex flex-row justify-content-between">
+      <div class="col-3 search-box">
+        <form class="search-form">
+          <label for="city-search" class="city-search">
+            <h2>Search for a City:</h2>
+          </label>
+          <p class="alert hide" id="alert">Please eneter a valid city.</p>
+          <input class="w-100" type="text" id="city-search" name="city-search" placeholder="Type in city name">
+          <button class="search-btn w-100" id="search-btn">Search</button>
+        </form>
+        <br>
+        <div class="search-history" id="search-history">
+        </div>
+      </div>
+
+      <div class="hide col-9 results-container" id="results-container">
+        <div class="info-container flex-row w-100" id="info-container">
+          <h3 class="city-name d-flex align-items-center">
+            <span id="city-name"></span>
+            <img id="icon-img" src="" alt="">
+          </h3>
+          <p class="weather-info">Temp: <span id="temp"></span>°F</p>
+          <p class="weather-info">Wind: <span id="wind"></span> MPH</p>
+          <p class="weather-info">Humidity: <span id="humidity"></span>%</p>
+          <p class="weather-info">UV Index: <span id="uv-index"></span></p>
         </div>
 
-        <div class="place-box">
-          <div class="time-zone" id="time-zone">Eastern Daylight Time</div>
-          <div id="country" class="country">USA</div>
+        <div class="forecast-container flex-row w-100">
+          <h4 class="forecast-header">5-Day Forecast</h4>
+
+          <div class="future-forecast d-flex justify-content-between" id="forecast-row">
+            <div class="forecast-box col-2">
+              <h5 class="future-header">
+                <span id="future-date"></span>
+                <img id="future-icon" src="" alt="">
+              </h5>
+              <p class="weather-info">Temp: <span id="temp">Temp</span>°F</p>
+              <p class="weather-info">Wind: <span id="wind"></span> MPH</p>
+              <p class="weather-info">Humidity: <span id="humidity"></span>%</p>
+            </div>
+
+            <div class="forecast-box col-2">
+              <h5 class="future-header">
+                <span id="future-date"></span>
+                <img id="future-icon" src="" alt="">
+              </h5>
+              <p class="weather-info">Temp: <span id="temp">Temp</span>°F</p>
+              <p class="weather-info">Wind: <span id="wind"></span> MPH</p>
+              <p class="weather-info">Humidity: <span id="humidity"></span>%</p>
+            </div>
+
+            <div class="forecast-box col-2">
+              <h5 class="future-header">
+                <span id="future-date"></span>
+                <img id="future-icon" src="" alt="">
+              </h5>
+              <p class="weather-info">Temp: <span id="temp">Temp</span>°F</p>
+              <p class="weather-info">Wind: <span id="wind"></span> MPH</p>
+              <p class="weather-info">Humidity: <span id="humidity"></span>%</p>
+            </div>
+
+            <div class="forecast-box col-2">
+              <h5 class="future-header">
+                <span id="future-date"></span>
+                <img id="future-icon" src="" alt="">
+              </h5>
+              <p class="weather-info">Temp: <span id="temp">Temp</span>°F</p>
+              <p class="weather-info">Wind: <span id="wind"></span> MPH</p>
+              <p class="weather-info">Humidity: <span id="humidity"></span>%</p>
+            </div>
+
+            <div class="forecast-box col-2">
+              <h5 class="future-header">
+                <span id="future-date"></span>
+                <img id="future-icon" src="" alt="">
+              </h5>
+              <p class="weather-info">Temp: <span id="temp">Temp</span>°F</p>
+              <p class="weather-info">Wind: <span id="wind"></span> MPH</p>
+              <p class="weather-info">Humidity: <span id="humidity"></span>%</p>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="forecast-box">
-      <div class="today" id="current-temp">
-        <img
-          src="http://openweathermap.org/img/wn/10d@2x.png"
-          alt="weather icon"
-          class="w-icon"
-        />
-        <div class="today">
-          <div class="day">Monday</div>
-          <div class="temp">Night - 25.6&#176; C</div>
-          <div class="temp">Day - 35.6&#176; C</div>
-        </div>
-      </div>
-      <div class="weather-forecast" id="weather-forecast">
-        <div class="weather-forecast-item">
-          <div class="day">Tue</div>
-          <img
-            src="http://openweathermap.org/img/wn/10d@2x.png"
-            alt="weather icon"
-            class="w-icon"
-          />
-          <div class="temp">Night - 25.6&#176; C</div>
-          <div class="temp">Day - 35.6&#176; C</div>
-        </div>
-        <div class="weather-forecast-item">
-          <div class="day">Wed</div>
-          <img
-            src="http://openweathermap.org/img/wn/10d@2x.png"
-            alt="weather icon"
-            class="w-icon"
-          />
-          <div class="temp">Night - 25.6&#176; C</div>
-          <div class="temp">Day - 35.6&#176; C</div>
-        </div>
-        <div class="weather-forecast-item">
-          <div class="day">Thur</div>
-          <img
-            src="http://openweathermap.org/img/wn/10d@2x.png"
-            alt="weather icon"
-            class="w-icon"
-          />
-          <div class="temp">Night - 25.6&#176; C</div>
-          <div class="temp">Day - 35.6&#176; C</div>
-        </div>
-        <div class="weather-forecast-item">
-          <div class="day">Fri</div>
-          <img
-            src="http://openweathermap.org/img/wn/10d@2x.png"
-            alt="weather icon"
-            class="w-icon"
-          />
-          <div class="temp">Night - 25.6&#176; C</div>
-          <div class="temp">Day - 35.6&#176; C</div>
-        </div>
-        <div class="weather-forecast-item">
-          <div class="day">Sat</div>
-          <img
-            src="http://openweathermap.org/img/wn/10d@2x.png"
-            alt="weather icon"
-            class="w-icon"
-          />
-          <div class="temp">Night - 25.6&#176; C</div>
-          <div class="temp">Day - 35.6&#176; C</div>
-        </div>
-      </div>
-    </div>
-    <script src="./assets/js/script.js"></script>
-    <script src="https://api.openweathermap.org/data/2.5/onecall?lat=-40.44&lon=70.04&dt=1652603062&units=imperial&exclude=hourly,minutely&appid={API key}"></script>
+    </main>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="assets/js/script.js"></script>
   </body>
+ 
 </html>
