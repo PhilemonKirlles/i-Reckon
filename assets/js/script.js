@@ -90,6 +90,7 @@ function getCoordinates(searchInput) {
   var coordinateUrl =
     "https://api.openweathermap.org/data/2.5/weather?q=" +
     searchInput +
+    "&US"
     "&appid=" +
     unlock;
   fetch(coordinateUrl)
@@ -138,7 +139,7 @@ function getWeather(lat, lon) {
     "&lon=" +
     lon +
     "&units=imperial" +
-    "&exclude=alerts" +
+    "&exclude=minutely" +
     "&appid=" +
     unlock;
   fetch(weatherUrl)
@@ -175,10 +176,11 @@ function fillCurrentData() {
   let cDay = currentDate.getDate();
   let cMonth = currentDate.getMonth() + 1;
   let cYear = currentDate.getFullYear();
+
   // show all weather elements
   cityWrap.classList.remove("invisible");
   // append city name to page
-  cityNameEl.textContent = "Today in " + cityName;
+  cityNameEl.textContent = "In " + cityName;
   // create span to fill with current date
   var todayEl = document.createElement("span");
   // use the date function in JS to set current date and append to page
@@ -189,6 +191,7 @@ function fillCurrentData() {
   // append current weather info to the page
 
   var tempData = weatherInfo.current.temp;
+
   // round temperature
   simpleTemp = Math.round(tempData);
   temp.textContent = simpleTemp + "\xB0 F";
@@ -344,13 +347,14 @@ function useCurrentLocation(lat, lon) {
     .then(function (data) {
       // get city name from this api call
       cityName = data.name;
+
       // pass lat and lon for next api call
       getWeather(lat, lon);
       // add current location to search history
       if (searchHistory.includes(cityName)) {
         // do nothing
       } else {
-        if (searchHistory.length >= 8) {
+        if (searchHistory.length >= 10) {
           // add item to beginning of saved array
           searchHistory.unshift(cityName);
           // remove last item from array
