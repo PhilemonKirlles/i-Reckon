@@ -1,5 +1,6 @@
-# Weather-app
-# 
+# i-Reckon 
+
+  # Weather Dashboard
 
 
 [![Generic badge](https://img.shields.io/badge/License-MIT-yellowgreen.svg)](https://shields.io/)
@@ -7,13 +8,11 @@
 ![Project Vedio]()
 
 
-https://user-images.githubusercontent.com/99282495/174142721-53019795-c1b4-4a4e-aa2b-c5ed1098ab4d.mp4
-
 ---
 
 ## Table of Contents
 
-- [Description(#description)
+- [Description](#description)
 - [How To Use](#how-to-use)
 - [References](#references)
 - [License](#license)
@@ -22,11 +21,12 @@ https://user-images.githubusercontent.com/99282495/174142721-53019795-c1b4-4a4e-
 ---
 
 ## Description
-
+i-Rekcon the Weather Dashboard is a utility tool for monitoring current weather and future forecast 
+ i-Reckon can recall up to 10 previous locations, clear previous history, detect current coordinates, and search by city name/geolocation.
 
 
 ## Purpose
-
+To "see the weather outlook for multiple cities" in order to prepare accordingly.
 
 
 ### User Story
@@ -83,7 +83,7 @@ SO THAT I can plan a trip accordingly."
  -Check the weather in the displayed cards.
 
  - Click on the city name to recall your stored locations.
- 
+
  -click Clear History button to clear.
 
 ## Deployment Site
