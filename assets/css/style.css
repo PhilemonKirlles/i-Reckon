@@ -1,135 +1,57 @@
-* {
-  margin: 0;
-  box-sizing: border-box;
-}
+:root{
+  --bg-color: linear-gradient(to top right,#c0c0c0,#413855);
+  --font-color:#413855;
+ 
 
-body {
-  background: rgb(161, 155, 176);
-  background-repeat: no-repeat;
-}
 
-h1 {
-  color: whitesmoke;
-  font-weight: bolder;
-  margin-bottom: 16px;
-  margin-top: 16px;
-  align-content: center;
+  
+
 }
 
 header {
-  animation: myanime 60000ms infinite alternate;
-  background: linear-gradient(to right, rgb(210, 235, 245), rgb(13, 0, 41));
-  text-align: center;
-}
-main {
-  margin: 10px 20px 10px 10px;
-}
-
-.hide {
-  display: none;
+  text-align:left;
+  border-radius: 7%;
+  background-color: var(--bg-color);
+  border-bottom:solid 3px #413855;
+  border-left: solid 3px #413855;
+  margin: 16px 16px 22px 16px;
+  font-style: oblique !important;
 }
 
-.alert {
-  color: orangered;
-  font-size:16px;
-  margin: 0;
-  padding: 0;
+html, body {
+  color: var(--font-color);
+  background-image: linear-gradient(to bottom right, #fceea0e3,#c0c0c0,#413855);
 }
 
-.search-btn {
-  color: #d2ebf5;
-  background-color: #0d00299f;
-  font-weight: bold;
-  margin-bottom: 10px;
-  border-radius: 7px;
-  border-color: #d2ebf5;
+
+.btn-primary {
+  background-color: #c0c0c0 !important;
+
+}
+.btn-primary:hover, .btn-primary:active {
+  border: #413855!important;
+  background-color:#fdfdf1 !important;
+
 }
 
-.search-history {
-  padding-top: 5px;
-  border-top: 3px solid #d2ebf5;
+
+
+
+
+
+.fas {
+  margin-left: .5rem;
 }
 
-.recall-btn {
-  margin: 5px 0 5px 0;
-  background-color: #d2ebf5;
-  padding: 1px yellow;
-  border: 3px solid #0d00299f;
-  border-radius: 7px;
+#uv-index {
+  border-radius: 4px;
+  padding: .2rem .6rem;
+  margin-left: .2rem;
 }
 
-.results-container {
-  margin: 10px 16px 10px 16px;
-  border: 1px solid #d2ebf558;
-  padding: 12px;
-  box-shadow: 4px #d2ebf558;
-}
-
-.info-container {
-  padding: 5px;
-  margin-left: 22px;
-}
-
-.weather-info {
-  font-weight: 500;
-  color: #0d00299f;
-  border-bottom: 3px solid #d2ebf5;
-  max-width: 80%;
-  display:flex ;
-  flex-wrap: wrap;
-}
-
-.city-name {
-  font-weight: bold;
-  color: #0d00299f;
-}
-
-.forecast-container {
-  margin: 10px;
-  padding: 10px;
-  display: inline-block;
-  
-}
-.forcast-header{
-  color: #0d00299f;
-  font-style: oblique;
-}
-
-.forecast-box {
-  color: #d2ebf558;
-  background-color: #d2ebf5;
-  padding-left: 9px;
-  border-radius: 5%;
-  align-self:center;
-  border:1px hsla(197, 64%, 89%, 0.345);
-  font-size: 86%;
-}
-
-.forecast-box:hover {
-  transition-duration: 750ms;
-  box-shadow: 3px 6px 3px 0px  #0d00299f;
-}
-
-.low {
-  border-radius: 7px;
-  background-color: yellowgreen;
-  padding: 0 3px;
-}
-
-.mid {
-  border-radius: 3px;
-  background-color: yellow;
-  padding: 0 3px;
-}
-
-.high {
-  border-radius: 3px;
-  background-color: orangered;
-  padding: 0 3px;
-}
-
-button:hover {
-  transition-duration: 2000ms;
-  color: whitesmoke;
-  background-color: rgba(74, 70, 83, 0.913);
+.card {
+  padding: 1%;
+  border-top-left-radius: 7%;
+  background-color: hsla(66, 77%, 83%, 0.89);
+color: #413855 !important;
 }
