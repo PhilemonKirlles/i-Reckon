@@ -1,85 +1,57 @@
-* {
-  margin: 0;
-  box-sizing: border-box;
-}
+:root{
+  --bg-color: linear-gradient(to top right,#c0c0c0,#413855);
+  --font-color:#413855;
+ 
 
-body {
-  background: rgb(161, 155, 176);
-  background-repeat: no-repeat;
-  background-size: cover;
-}
 
-h1 {
-  color: whitesmoke;
-  font-weight: bolder;
-  margin-bottom: 18px;
+  
+
 }
 
 header {
-  animation: myanime 60000ms infinite alternate;
-  background: linear-gradient(to right, rgb(210, 235, 245), rgb(13, 0, 41));
-  text-align: center;
-}
-main {
-  margin: 10px 20px 10px 10px;
-}
-
-.hide {
-  display: none;
+  text-align:left;
+  border-radius: 7%;
+  background-color: var(--bg-color);
+  border-bottom:solid 3px #413855;
+  border-left: solid 3px #413855;
+  margin: 16px 16px 22px 16px;
+  font-style: oblique !important;
 }
 
-
-
-.search-btn {
-  color: #d2ebf5;
-  background-color: #0d00299f;
-  font-weight: bold;
-  margin-bottom: 10px;
-  border-radius: 7px;
-  border-color: #d2ebf5;
+html, body {
+  color: var(--font-color);
+  background-image: linear-gradient(to bottom right, #fceea0e3,#c0c0c0,#413855);
 }
 
-.search-history {
-  padding-top: 5px;
-  border-top: 3px solid #d2ebf5;
-}
 
-.recall-btn {
-  margin: 5px 0 5px 0;
-  background-color: #d2ebf5;
-  padding: 1px yellow;
-  border: 3px solid #0d00299f;
-  border-radius: 7px;
-}
+.btn-primary {
+  background-color: #c0c0c0 !important;
 
-.results-container {
-  margin: 10px;
 }
+.btn-primary:hover, .btn-primary:active {
+  border: #413855!important;
+  background-color:#fdfdf1 !important;
 
-.info-container {
-  border: 1px solid #d2ebf5;
-  padding: 5px;
 }
 
 
 
-.weather-info {
-  font-weight: 500;
+
+
+
+.fas {
+  margin-left: .5rem;
 }
 
-
-
-.forecast-container {
-  margin-top: 10px;
+#uv-index {
+  border-radius: 4px;
+  padding: .2rem .6rem;
+  margin-left: .2rem;
 }
 
-.forecast-box {
-
+.card {
+  padding: 1%;
+  border-top-left-radius: 7%;
+  background-color: hsla(66, 77%, 83%, 0.89);
+color: #413855 !important;
 }
-
-.forecast-box:hover {
-  transition-duration: 750ms;
-  box-shadow: 0px 0px 5px 2px #0d00299f;
-}
-
-
