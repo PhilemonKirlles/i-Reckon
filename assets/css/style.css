@@ -27,6 +27,7 @@ html, body {
 .btn-primary {
   background-color: #c0c0c0 !important;
   
+  
 
 }
 .btn-primary:hover, .btn-primary:active {
@@ -55,8 +56,13 @@ html, body {
   font-size: small;
 }
 .card {
-  padding: 1%;
-  border-top-left-radius: 7%;
+  margin: 16 16px 16px 12px;
+  padding: 2%;
+  border-top-left-radius: 12%;
   background-color: hsla(66, 77%, 83%, 0.89);
-color: #413855 !important;
+  color: #413855 !important;
+  box-shadow:0 12px 16px 0  #553e38;
+  perspective: 680px;
+  width: 100%;
+
 }

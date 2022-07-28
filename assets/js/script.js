@@ -1,5 +1,3 @@
-//unlock='d24c956ef5e85c170fe5bcf070e8ba6a';
-
 var searchBtn = document.querySelector(".searchBtn");
 var clearBtn = document.querySelector(".clearBtn");
 var locateBtn = document.querySelector(".locateBtn");
@@ -11,6 +9,8 @@ var input = document.getElementById("search-input");
 init();
 
 function init() {
+  // try to autopopulate current weather when user arrives if they allow location access
+  // better ux than blank site waiting to be filled with info
   getCurrentLocation();
   getSearchHistory();
 }
@@ -35,6 +35,7 @@ function handleFillHistory() {
     buttonDiv.classList.add("d-grid", "mt-2");
     buttonEl.classList.add("btn", "btn-secondary", "historyBtn");
     buttonEl.dataset.city = searchHistory[i];
+    // TODO capitalize every word here for user readability
     buttonEl.textContent = searchHistory[i];
     historyEl.append(buttonDiv);
     buttonDiv.append(buttonEl);
@@ -50,21 +51,25 @@ function handleAppendSingle(searchInput) {
   buttonEl.dataset.city = searchInput;
   buttonEl.textContent = searchInput;
 
-  if (searchHistory.length >= 10) {
+  if (searchHistory.length >= 8) {
+    // add button to the top
     historyEl.prepend(buttonDiv);
     buttonDiv.prepend(buttonEl);
-    // remove last search history
+    // remove last search history button to keep max 8 at all times
     historyEl.removeChild(historyEl.lastElementChild);
   } else {
+    // add button to bottom
     historyEl.append(buttonDiv);
     buttonDiv.append(buttonEl);
   }
 }
 
 function handleSearchHistoryClick(event) {
-  // get hist button clicked
+  // get button clicked
   var buttonClicked = event.target;
+  // get data-city of clicked button
   var searchHistoryInput = buttonClicked.dataset.city;
+  // if they clicked an actual button
   if (searchHistoryInput !== undefined) {
     getCoordinates(searchHistoryInput);
   }
@@ -85,28 +90,26 @@ function handleSearch() {
   }
 }
 
-// get lat and long coordinates of city from this api call
-
 function getCoordinates(searchInput) {
   var lat, lon;
   var coordinateUrl =
     "https://api.openweathermap.org/data/2.5/weather?q=" +
     searchInput +
-    "&US"
     "&appid=" +
     unlock;
+  // get lat and long coordinates of city from this api call
   fetch(coordinateUrl)
     .then(function (response) {
       if (response.status == 404) {
         // tell user the city that they typed was not found
-        //make this a modal
+        //TODO make this a modal
         alert("No city named " + searchInput + " found.");
         return;
       } else {
         return response.json();
       }
     })
-    //  pull the lat and long, set them to variables
+    // go into returned object and pull the lat and long, set them to variables
     .then(function (data) {
       lat = data.coord.lat;
       lon = data.coord.lon;
@@ -114,16 +117,21 @@ function getCoordinates(searchInput) {
       // pass lat and lon for next api call
       getWeather(lat, lon);
       searchInput = capitalFormat(searchInput);
-      // ADD TO SEARCH HISTORY
+      // since request was successful and city was found, add to search history
+      // ********* ADD TO SEARCH HISTORY ************ //
       // if the search is already in the search history, don't add it
       if (searchHistory.includes(searchInput)) {
+        // do nothing
       }
       // if city is not in the search history, push this search to the array
       else {
         if (searchHistory.length >= 8) {
+          // add item to beginning of saved array
           searchHistory.unshift(searchInput);
+          // remove last item from array
           searchHistory.pop();
         } else {
+          // add item to end of saved array
           searchHistory.push(searchInput);
         }
         // new function to add a single element so that the whole list array doesn't get rewritten to page
@@ -141,7 +149,7 @@ function getWeather(lat, lon) {
     "&lon=" +
     lon +
     "&units=imperial" +
-    "&exclude=minutely" +
+    "&exclude=alerts" +
     "&appid=" +
     unlock;
   fetch(weatherUrl)
@@ -152,7 +160,6 @@ function getWeather(lat, lon) {
         return response.json();
       }
     })
-
     // go into returned object with all the weather data
     .then(function (data) {
       weatherInfo = data;
@@ -161,7 +168,7 @@ function getWeather(lat, lon) {
 }
 
 function fillCurrentData() {
-  // CURRENT WEATHER
+  // ****** CURRENT WEATHER ****** //
   var cityWrap = document.querySelector("#city-wrapper");
   var temp = document.querySelector("#temp");
   var feels = document.querySelector("#feels-like");
@@ -173,27 +180,29 @@ function fillCurrentData() {
   var currentIconCode = weatherInfo.current.weather[0].icon;
   var iconUrl =
     "https://openweathermap.org/img/wn/" + currentIconCode + "@2x.png";
-
+  // TODO ADD MAP
+  var mapEl = document.querySelector("#map");
+  var mapUrl =
+    "https://tile.openweathermap.org/map/precipitation_new/1/1/1.png?appid=" +
+    unlock;
+  // TODO make its own function > get current date using js
   let currentDate = new Date();
   let cDay = currentDate.getDate();
   let cMonth = currentDate.getMonth() + 1;
   let cYear = currentDate.getFullYear();
-
   // show all weather elements
   cityWrap.classList.remove("invisible");
   // append city name to page
-  cityNameEl.textContent = "In " + cityName;
+  cityNameEl.textContent = "Today in " + cityName;
   // create span to fill with current date
   var todayEl = document.createElement("span");
   // use the date function in JS to set current date and append to page
   todayEl.innerHTML = " (" + cMonth + "/" + cDay + "/" + cYear + ")";
   cityNameEl.appendChild(todayEl);
   currentIconEl.setAttribute("src", iconUrl);
-  //TODO--add map? if time permitted
+  //TODO add map mapEl.setAttribute("src", iconUrl)
   // append current weather info to the page
-
   var tempData = weatherInfo.current.temp;
-
   // round temperature
   simpleTemp = Math.round(tempData);
   temp.textContent = simpleTemp + "\xB0 F";
@@ -243,14 +252,12 @@ function fillForecastData() {
     var iconCode = weatherInfo.daily[i + 1].weather[0].icon;
     var unixDate = weatherInfo.daily[i + 1].dt;
     var iconUrl = "https://openweathermap.org/img/wn/" + iconCode + "@2x.png";
-
     // assign classes
     dateEl.setAttribute("class", "date fw-bold");
     iconEl.setAttribute("class", "icon");
     tempEl.setAttribute("class", "temp");
     windEl.setAttribute("class", "wind");
     humidityEl.setAttribute("class", "humidity");
-
     // assign values
     if (i == 0) {
       dateEl.innerText = "Tomorrow ";
@@ -265,7 +272,6 @@ function fillForecastData() {
       "Wind: " + Math.round(weatherInfo.daily[i + 1].wind_speed) + " MPH";
     humidityEl.innerText =
       "Humidity: " + Math.round(weatherInfo.daily[i + 1].humidity) + " %";
-
     // append to page
     forecastEL.classList.remove("invisible");
     forecastEL.children[i].appendChild(dateEl);
@@ -287,13 +293,11 @@ function timeConverter(UNIX_timestamp) {
   var formattedDate = month + "/" + date + "/" + year;
   return formattedDate;
 }
-
 // Get current location from browser
 function getCurrentLocation() {
   console.log("Requesting device location");
   navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
 }
-
 // grab coords from current location if given permission & location is available
 function successCallback(position) {
   var lat = parseFloat(position.coords.latitude);
@@ -304,7 +308,6 @@ function successCallback(position) {
   // get city name based on current location
   useCurrentLocation(lat, lon);
 }
-
 // handle errors for get current location
 function errorCallback(error) {
   var errorDiv = document.querySelector(".error");
@@ -332,7 +335,6 @@ function useCurrentLocation(lat, lon) {
     lon +
     "&appid=" +
     unlock;
-
   // make api call
   fetch(apiUrl)
     .then(function (response) {
@@ -349,19 +351,19 @@ function useCurrentLocation(lat, lon) {
     .then(function (data) {
       // get city name from this api call
       cityName = data.name;
-
       // pass lat and lon for next api call
       getWeather(lat, lon);
       // add current location to search history
       if (searchHistory.includes(cityName)) {
         // do nothing
       } else {
-        if (searchHistory.length >= 10) {
+        if (searchHistory.length >= 8) {
           // add item to beginning of saved array
           searchHistory.unshift(cityName);
           // remove last item from array
           searchHistory.pop();
         } else {
+          // add item to end of saved array
           searchHistory.push(cityName);
         }
         handleAppendSingle(cityName);
@@ -370,22 +372,29 @@ function useCurrentLocation(lat, lon) {
     });
 }
 
-// click button or enter key in searchbox
+// click button on enter key in searchbox
+// Execute a function when the user presses a key on the keyboard while typing in the searchbox
 input.addEventListener("keyup", function (event) {
+  // Number 13 is the "Enter" key on the keyboard
   if (event.key === "Enter") {
+    // Cancel the default action, if needed
     event.preventDefault();
+    // Trigger the button element with a click
     searchBtn.click();
+    // reset input text on search
     input.value = "";
-    // disable search button
+    //reset disable search button on search
     searchBtn.disabled = true;
-  } else {
+  }
+  // they are typing something and did not hit enter
+  else {
     if (input.value.trim() != "") searchBtn.disabled = false;
     else {
       searchBtn.disabled = true;
     }
   }
 });
-// Capitalize input
+// formats input to capitalize the first letter of each word in the city. i.e new york -> New York
 function capitalFormat(searchInput) {
   var cap = searchInput.split(" ");
   for (let i = 0; i < cap.length; i++) {
@@ -393,12 +402,13 @@ function capitalFormat(searchInput) {
   }
   return cap.join(" ");
 }
-// clear saved array
 
 function handleClear() {
+  // clear savedEvent array
   searchHistory = [];
   // save to local storage
   localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
+  // refresh page to show changes immediately
   location.reload();
 }
 
