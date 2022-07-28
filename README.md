@@ -1,6 +1,6 @@
 # i-Reckon 
 
-  # Weather Dashboard
+  ## Weather Dashboard
 
 
 [![Generic badge](https://img.shields.io/badge/License-MIT-yellowgreen.svg)](https://shields.io/)
@@ -10,7 +10,7 @@
 
 ---
 
-## Table of Contents
+### Table of Contents
 
 - [Description](#description)
 - [How To Use](#how-to-use)
@@ -25,7 +25,7 @@ i-Rekcon the Weather Dashboard is a utility tool for monitoring current weather 
  i-Reckon can recall up to 10 previous locations, clear previous history, detect current coordinates, and search by city name/geolocation.
 
 
-## Purpose
+### Purpose
 To "see the weather outlook for multiple cities" in order to prepare accordingly.
 
 
@@ -96,7 +96,7 @@ UConn bootcamp class License
 Copyright (c) [2022] [CatFishChisel]
 ---
 
-## Contact
+### Contact
 
 -name- [AbdEllah,Philemon]
 
