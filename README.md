@@ -5,7 +5,12 @@
 
 [![Generic badge](https://img.shields.io/badge/License-MIT-yellowgreen.svg)](https://shields.io/)
 
-![Project Vedio](https://watch.screencastify.com/v/6RJU2kdlpQgCASRj0zht)
+![Project Vedio]
+(
+
+https://user-images.githubusercontent.com/99282495/181511355-83c8d128-c3c1-44ad-b438-59fce90f58d6.mp4
+
+)
 
 
 ---
